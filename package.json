@@ -11,6 +11,7 @@
     "postbuild": "rsync -raze \"ssh -i /home/mauro/.ssh/godaddy.pem\" --progress --delete /home/mauro/code/luna-says/dist/ mauromadeit@160.153.41.2:/home/mauromadeit/public_html/luna-says/"
   },
   "dependencies": {
+    "mauromadeit-vue-commons": "file:../commons-vue",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",

@@ -1,26 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { store as CommonStore } from 'mauromadeit-vue-commons'$
-const { getCollection, unshift } = CommonStore
+import { Database, store } from 'mauromadeit-vue-commons'
+const dbCfg = { ref: 'poster'  }
+const { getCollection, set } = store.make({ dbCfg })
 
 Vue.use(Vuex)
 
 export const state = {
+  posts: [],
 }
 
 export const getters = {
-  posts: [],$
 }
 
 export const mutations = {
-  unshiftPosts: unshift('posts'),$
+  setPosts: set('posts'),
 }
 
-export const actions = {$
-  getFirebasePosts: getCollection({$
-    path: 'destinations/mauromadeit/posts',$
-    mutation: 'unshiftPosts',$
-  }),$
+export const actions = {
+  getPosts: getCollection({
+    path: 'destinations/luna-says/posts',
+    mutation: 'setPosts',
+  }),
 }
 
 const Store = new Vuex.Store({
