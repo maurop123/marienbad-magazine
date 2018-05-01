@@ -5,44 +5,53 @@
         <div class="text-xs-center">
           <div class="headline">Luna Says</div>
         </div>
-        <div v-for="item in posts" :key="item.id">
-          <v-card class="my-4">
-            <v-card-media v-if="item.img"
-              class="white--text"
-              height="300px"
-              :src="item.img"
-            />
-            <v-card-title v-if="item.title">
-              <h2>{{ item.title }}</h2>
-            </v-card-title>
-            <v-card-text v-if="item.content">
-              <div v-html="item.content"></div>
-            </v-card-text>
-            <v-card-actions v-if="item.link">
-              <v-btn flat block class="blue--text"
-                :to="`blog/${item.link}`"
-              >
-                Read More
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </div>
+        <masonry-grid :items="filteredPosts">
+          <template slot-scope="post">
+            <post-card v-bind="post" @toggleTagFilter="toggleTagFilter" />
+          </template>
+        </masonry-grid>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+  import { components } from 'mauromadeit-vue-commons'
+  const { MasonryGrid } = components.layouts
+  const { PostCard } = components
+
   export default {
     name: 'home-view',
+    components: {
+      MasonryGrid,
+      PostCard,
+    },
+    data() {
+      return {
+        tagFilters: [],
+      }
+    },
     computed: {
       posts() {
         return this.$store.state.posts
       },
+      filteredPosts() {
+        return (this.tagFilters.length === 0) ? this.posts
+        : this.tagFilters.reduce((posts, tag) =>
+        posts.filter(p => p.tags.indexOf(tag) > -1), this.posts)
+      },
     },
     mounted() {
       this.$store.dispatch('getPosts')
-    }
+    },
+    methods: {
+      toggleTagFilter(tag) {
+        console.log('on toggleTagFilter', tag)
+        const i = this.tagFilters.indexOf(tag)
+        if (i < 0) this.tagFilters.push(tag)
+        else this.tagFilters.splice(i, 1)
+      }
+    },
   }
 </script>
 

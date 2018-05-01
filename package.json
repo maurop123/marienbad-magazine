@@ -31,8 +31,6 @@
     "babel-jest": "^22.0.4",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "vue-cli-plugin-mauromadeit": "file:../plugin-mauromadeit-vue-cli",
-    "vue-cli-plugin-vuetify": "^0.1.0",
     "vue-template-compiler": "^2.5.13"
   },
   "babel": {
