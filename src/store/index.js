@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { Database, store } from 'mauromadeit-vue-commons'
-const dbCfg = { ref: 'poster'  }
+const dbCfg = { ref: 'poster' }
 const { getCollection, set } = store.make({ dbCfg })
 
 Vue.use(Vuex)

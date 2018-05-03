@@ -6,7 +6,7 @@ export default [{
   name: 'home',
   component: Home,
 }, {
-  path: '/posts/:postId',
+  path: '/posts/:postId/:postLink',
   name: 'post',
   component: Post,
   props: true,
