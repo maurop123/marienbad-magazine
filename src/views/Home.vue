@@ -3,11 +3,17 @@
     <v-layout row wrap>
       <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg4 offset-lg4 xl2 offset-xl5>
         <div class="text-xs-center">
-          <div class="headline">Luna Says</div>
+          <div class="headline">Marienbad Magazine</div>
         </div>
+      </v-flex>
+      <v-flex xs12>
         <masonry-grid :items="filteredPosts">
           <template slot-scope="post">
-            <post-card v-bind="post" @toggleTagFilter="toggleTagFilter" />
+            <post-card
+              v-bind="post"
+              class="my-4"
+              @toggleTagFilter="toggleTagFilter"
+            />
           </template>
         </masonry-grid>
       </v-flex>
@@ -33,7 +39,7 @@
     },
     computed: {
       posts() {
-        return this.$store.state.posts
+        return this.$store.getters.getPublishedPosts
       },
       filteredPosts() {
         return (this.tagFilters.length === 0) ? this.posts

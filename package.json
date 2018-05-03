@@ -8,7 +8,7 @@
     "test": "vue-cli-service test",
     "e2e": "vue-cli-service e2e",
     "lint": "vue-cli-service lint",
-    "postbuild": "rsync -raze \"ssh -i /home/mauro/.ssh/godaddy.pem\" --progress --delete /home/mauro/code/luna-says/dist/ mauromadeit@160.153.41.2:/home/mauromadeit/public_html/luna-says/"
+    "postbuild": "rsync -raze \"ssh -i ~/.ssh/godaddy.pem\" --progress --delete ~/code/marienbad-magazine/dist/ mauromadeit@160.153.41.2:/home/mauromadeit/public_html/luna-says/"
   },
   "dependencies": {
     "mauromadeit-vue-commons": "file:../commons-vue",

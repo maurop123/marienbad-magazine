@@ -11,6 +11,9 @@ export const state = {
 }
 
 export const getters = {
+  getPublishedPosts(state) {
+    return state.posts.filter(p => p.published)
+  },
 }
 
 export const mutations = {
@@ -19,7 +22,7 @@ export const mutations = {
 
 export const actions = {
   getPosts: getCollection({
-    path: 'destinations/luna-says/posts',
+    path: 'destinations/marienbad-magazine/posts',
     mutation: 'setPosts',
   }),
 }
