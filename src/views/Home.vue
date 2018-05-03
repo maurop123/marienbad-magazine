@@ -47,12 +47,8 @@
         posts.filter(p => p.tags.indexOf(tag) > -1), this.posts)
       },
     },
-    mounted() {
-      this.$store.dispatch('getPosts')
-    },
     methods: {
       toggleTagFilter(tag) {
-        console.log('on toggleTagFilter', tag)
         const i = this.tagFilters.indexOf(tag)
         if (i < 0) this.tagFilters.push(tag)
         else this.tagFilters.splice(i, 1)
